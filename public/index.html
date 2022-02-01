@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ЭЛЕКТРОННОЕ РАСПИСАНИЕ УРОКОВ</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.user-header__icon').click(function(event) {
+                $('.user-header__menu').toggleClass('_active');
+            });
+            $('.icon-menu').click(function(event) {
+                $('.icon-menu').toggleClass('_active');
+                $('.menu__body').toggleClass('_active');
+            });
+            $('.user-header__link').click(function(event) {
+                let user_menu = document.querySelector(".user-header__menu");
+                user_menu.classList.remove('_active');
+            });
+        });
+        document.documentElement.addEventListener("click", function(e) {
+            if (!e.target.closest('.user-header')) {
+                let user_menu = document.querySelector(".user-header__menu");
+                user_menu.classList.remove('_active');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <app-root></app-root>
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="scripts.js" defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
+
+</html>

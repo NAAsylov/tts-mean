@@ -1,0 +1,57 @@
+<div class="schoole-timescedule">
+    <div class="schoole-timescedule__title">Расписание звонков</div>
+    <form class="schoole-timescedule__action" [formGroup]="angForm" novalidate>
+        <div class="schoole-timescedule__action_input">
+            <div class="form-group">
+                <input type="text" placeholder="Номер урока" formControlName="NumberLesson" #NumberLesson>
+            </div>
+            <div *ngIf="angForm.controls['NumberLesson'].invalid && (angForm.controls['NumberLesson'].dirty || angForm.controls['NumberLesson'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['NumberLesson'].errors.required">
+                    Номер урока не введен!
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Время начала урока" formControlName="StartLesson" #StartLesson>
+            </div>
+            <div *ngIf="angForm.controls['StartLesson'].invalid && (angForm.controls['StartLesson'].dirty || angForm.controls['StartLesson'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['StartLesson'].errors.required">
+                    Время начала урока не введено!
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Время конца урока" formControlName="EndLesson" #EndLesson>
+            </div>
+            <div *ngIf="angForm.controls['EndLesson'].invalid && (angForm.controls['EndLesson'].dirty || angForm.controls['EndLesson'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['NumberLesson'].errors.required">
+                    Время конца урока не введено!
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="schoole-timescedule__action_button" (click)="addCall(NumberLesson.value, StartLesson.value, EndLesson.value); getCalls()" [disabled]="angForm.pristine || angForm.invalid" [routerLink]="['/school_buzzer']">
+              Добавить
+            </button>
+        </div>
+    </form>
+    <table class="schoole-timescedule__table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let call of calls">
+                <td>{{ call.NumberLesson }}</td>
+                <td>{{ call.StartLesson }}</td>
+                <td>{{ call.EndLesson }}</td>
+                <td>
+                    <a class="schoole-timescedule__table_edit" [routerLink]="['/buzzer_edit', call._id]"></a>
+                    <a class="schoole-timescedule__table_delete" data-title="Удалить?" (click)="deleteCall(call._id)"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

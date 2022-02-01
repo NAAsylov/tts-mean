@@ -1,0 +1,26 @@
+<div class="form__auth _auth">
+    <div class="auth__title">
+        Регистрация
+    </div>
+    <form class="auth__body body-auth" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group body-auth__group">
+            <label for="username" class="body-auth__title">Логин</label>
+            <input type="text" formControlName="username" class="form-control body-auth__input" [ngClass]="{'is-invalid': submitted && f.username.errors}" placeholder="Придумайте логин" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Логин не введен</div>
+            </div>
+        </div>
+        <div class="form-group body-auth__group">
+            <label for="password" class="body-auth__title">Пароль</label>
+            <input type="password" formControlName="password" class="form-control body-auth__input" [ngClass]="{'is-invalid': submitted && f.password.errors}" placeholder="Придумайте пароль" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required ">Пароль не введен</div>
+            </div>
+        </div>
+        <button [disabled]="loading" class="body-auth__btn">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Регистрация
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </form>
+</div>

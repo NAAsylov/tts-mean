@@ -1,0 +1,347 @@
+<div class="timetable">
+    <ul class="timetable__list">
+        <li>
+            <div class="timetable__header _monday" (click)="openMonday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _monday">
+                        Понедельник
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 1">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _monday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th> -->
+                        <!-- <th class="header-table__homework">Домашнее задание</th> -->
+                        <!-- <th class="header-table__visit">Посещаемость</th> -->
+                        <!-- <th class="header-table__rating">Оценка</th> -->
+                        <!-- <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Понедельник'">
+                            {{ gs.NumberLesson }}<br>
+                            <span *ngFor="let call of calls">
+                              <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                                {{call.StartLesson}} - {{call.EndLesson}}
+                              </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Понедельник'">
+                              {{ gs.NameLesson}}
+                            </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td> -->
+                        <!-- <td class="body-table__column"></td> -->
+                        <!-- <td class="body-table__column"></td> -->
+                        <!-- <td class="body-table__column"></td> -->
+                        <!-- <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header _tuesday" (click)="openTuesday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _tuesday">
+                        Вторник
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 2">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _tuesday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Вторник'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Вторник'">
+                              {{ gs.NameLesson}}
+                            </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openWednesday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _wednesday">
+                        Среда
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 3">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _wednesday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Среда'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Среда'">
+                            {{ gs.NameLesson}}
+                          </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openThursday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _thursday">
+                        Четверг
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 4">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _thursday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Четверг'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Четверг'">
+                            {{ gs.NameLesson}}
+                          </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openFriday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _friday">
+                        Пятница
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 5">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _friday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Пятница'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Пятница'">
+                            {{ gs.NameLesson}}
+                          </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openSaturday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _saturday">
+                        Суббота
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 6">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _saturday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Суббота'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Суббота'">
+                            {{ gs.NameLesson}}
+                          </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openSunday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _sunday">
+                        Воскресенье
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 0">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _sunday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">№</th>
+                        <th class="header-table__subject">Предмет</th>
+                        <!-- <th class="header-table__topic">Тема</th>
+                        <th class="header-table__homework">Домашнее задание</th>
+                        <th class="header-table__visit">Посещаемость</th>
+                        <th class="header-table__rating">Оценка</th>
+                        <th class="header-table__teacher">Учитель</th> -->
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr class="body-table__row" *ngFor="let gs of gss">
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Воскресенье'">
+                        {{ gs.NumberLesson }}<br>
+                        <span *ngFor="let call of calls">
+                          <span *ngIf="call.NumberLesson == gs.NumberLesson">
+                            {{call.StartLesson}} - {{call.EndLesson}}
+                          </span>
+                            </span>
+                            </span>
+                        </td>
+                        <td class="body-table__column">
+                            <span *ngIf="gs.ClassLesson == user.user.school_class && gs.DayLesson == 'Воскресенье'">
+                            {{ gs.NameLesson}}
+                          </span>
+                        </td>
+                        <!-- <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td>
+                        <td class="body-table__column"></td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>

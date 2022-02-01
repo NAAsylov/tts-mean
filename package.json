@@ -1,0 +1,28 @@
+{
+    "name": "tts2.0",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "basic-auth": "^2.0.1",
+        "bcryptjs": "*",
+        "body-parser": "*",
+        "cors": "*",
+        "express": "*",
+        "express-basic-auth": "^1.2.0",
+        "jsonwebtoken": "*",
+        "mongoose": "*",
+        "ng2-slim-loading-bar": "^4.0.0",
+        "nodemailer": "^6.4.8",
+        "nodemon": "^2.0.2",
+        "npm": "*",
+        "passport": "*",
+        "passport-jwt": "*"
+    }
+}

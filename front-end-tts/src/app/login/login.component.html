@@ -1,0 +1,18 @@
+<div class="form__auth _auth">
+    <div class="auth__title">Авторизация</div>
+    <form class="auth__body body-auth" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group body-auth__group">
+            <label for="username" class="body-auth__title">Логин</label>
+            <input type="text" placeholder="Введите логин" class="form-control body-auth__input" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        </div>
+        <div class="form-group body-auth__group">
+            <label for="password" class="body-auth__title">Пароль</label>
+            <input type="password" placeholder="Введите пароль" class="form-control body-auth__input" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        </div>
+        <button [disabled]="loading" class="body-auth__btn" type="submit">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Войти
+          </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="user-account">
+    <div class="user-account__title">Основная информация</div>
+    <form class="user-account__date" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+        <div class="user-account__date_title">Фамилия:</div>
+        <div class="user-account__date_input form-group">
+            <input class="form-control" type="text" [(ngModel)]="currentUser.user.surname" placeholder="Фамилия*" [ngClass]="{ 'is-invalid': submitted && f.surname.errors }" formControlName="surname">
+        </div>
+        <div class="user-account__date_title">Имя:</div>
+        <div class="user-account__date_input form-group">
+            <input class="form-control" type="text" [(ngModel)]="currentUser.user.name" placeholder="Имя*" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" formControlName="name">
+        </div>
+        <div class="user-account__date_title">Отчество:</div>
+        <div class="user-account__date_input form-group">
+            <input type="text" [(ngModel)]="currentUser.user.patronymic" placeholder="Отчество" [ngClass]="{ 'is-invalid': submitted && f.patronymic.errors }" formControlName="patronymic">
+        </div>
+        <div class="user-account__date_title">Класс:</div>
+        <div class="user-account__date_input form-group">
+            <input class="form-control" type="text" [(ngModel)]="currentUser.user.school_class" placeholder="Класс*" [ngClass]="{ 'is-invalid': submitted && f.school_class.errors }" formControlName="school_class">
+        </div>
+        <button class="user-account__date_button" [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Сохранить
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+        <p>* отмечены поля, обязательные для заполнения</p>
+    </form>
+</div>

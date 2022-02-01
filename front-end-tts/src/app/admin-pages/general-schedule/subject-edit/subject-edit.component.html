@@ -1,0 +1,37 @@
+<div class="subject-add">
+    <form [formGroup]="angForm" novalidate>
+        <div class="number-subject form-group">
+            <div class="subject-add__header">Номер урока:</div>
+            <input type="text" placeholder="Текущий номер: {{gs.NumberLesson}}" value="" formControlName="NumberLesson" #NumberLesson>
+        </div>
+        <div *ngIf="angForm.controls['NumberLesson'].invalid && (angForm.controls['NumberLesson'].dirty || angForm.controls['NumberLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NumberLesson'].errors.required">
+                Номер урока не введен!
+            </div>
+        </div>
+        <div class="day-subject form-group">
+            <div class="subject-add__header">День недели:</div>
+            <input type="text" class="form-control" readonly placeholder="День недели" value="{{gs.DayLesson}}" formControlName="DayLesson" #DayLesson />
+        </div>
+        <div class="class-subject form-group">
+            <div class="subject-add__header">Класс:</div>
+            <input type="text" class="form-control" readonly placeholder="Для какого класса" value="{{gs.ClassLesson}}" formControlName="ClassLesson" #ClassLesson />
+        </div>
+        <div class="subject-subject form-group">
+            <div class="subject-add__header">Предмет:</div>
+            <select class="subject-add__select" formControlName="NameLesson" #NameLesson>
+              <option selected="selected">Выберите предмет</option>
+              <option *ngFor="let subject of subjects">{{subject.NameSubject}}</option>
+            </select>
+        </div>
+        <div *ngIf="angForm.controls['NameLesson'].invalid && (angForm.controls['NameLesson'].dirty || angForm.controls['NameLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NameLesson'].errors.required">
+                Название урока не введено!
+            </div>
+        </div>
+        <button (click)="updateGS(NumberLesson.value, DayLesson.value, ClassLesson.value, NameLesson.value);" type="submit" [disabled]="angForm.pristine || angForm.invalid">
+          Изменить
+        </button>
+        <a [routerLink]="['/general_schedule']" class="cancel">Отмена</a>
+    </form>
+</div>

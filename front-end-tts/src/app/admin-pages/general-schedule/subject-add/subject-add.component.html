@@ -1,0 +1,59 @@
+<div class="subject-add">
+    <form [formGroup]="angForm" novalidate>
+        <div class="number-subject form-group">
+            <div class="subject-add__header">Номер урока:</div>
+            <input type="text" formControlName="NumberLesson" #NumberLesson>
+        </div>
+        <div *ngIf="angForm.controls['NumberLesson'].invalid && (angForm.controls['NumberLesson'].dirty || angForm.controls['NumberLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NumberLesson'].errors.required">
+                Номер урока не введен!
+            </div>
+        </div>
+        <div class="day-subject form-group">
+            <div class="subject-add__header">День недели:</div>
+            <select class="subject-add__select" formControlName="DayLesson" #DayLesson>
+              <option selected="selected">Выберите день</option>
+              <option>Понедельник</option>
+              <option>Вторник</option>
+              <option>Среда</option>
+              <option>Четверг</option>
+              <option>Пятница</option>
+              <option>Суббота</option>
+              <option>Воскресенье</option>
+            </select>
+        </div>
+        <div *ngIf="angForm.controls['DayLesson'].invalid && (angForm.controls['DayLesson'].dirty || angForm.controls['DayLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['DayLesson'].errors.required">
+                День недели не выбран!
+            </div>
+        </div>
+        <div class="class-subject form-group">
+            <div class="subject-add__header">Класс:</div>
+            <select class="subject-add__select" formControlName="ClassLesson" #ClassLesson>
+              <option selected="selected">Выберите класс</option>
+              <option *ngFor="let class of classs">{{class.NumberClass}}</option>
+            </select>
+        </div>
+        <div *ngIf="angForm.controls['ClassLesson'].invalid && (angForm.controls['ClassLesson'].dirty || angForm.controls['ClassLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['ClassLesson'].errors.required">
+                Класс не введен!
+            </div>
+        </div>
+        <div class="subject-subject form-group">
+            <div class="subject-add__header">Предмет:</div>
+            <select class="subject-add__select" formControlName="NameLesson" #NameLesson>
+              <option selected="selected">Выберите предмет</option>
+              <option *ngFor="let subject of subjects">{{subject.NameSubject}}</option>
+            </select>
+        </div>
+        <div *ngIf="angForm.controls['NameLesson'].invalid && (angForm.controls['NameLesson'].dirty || angForm.controls['NameLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NameLesson'].errors.required">
+                Название урока не введено!
+            </div>
+        </div>
+        <button (click)="addGS(NumberLesson.value, DayLesson.value, ClassLesson.value, NameLesson.value);" type="submit" class="btn" [disabled]="angForm.pristine || angForm.invalid" [routerLink]="['/general_schedule']">
+          Добавить
+        </button>
+        <a [routerLink]="['/general_schedule']" class="cancel">Отмена</a>
+    </form>
+</div>

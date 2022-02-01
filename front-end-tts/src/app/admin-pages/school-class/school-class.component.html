@@ -1,0 +1,28 @@
+<div class="config-school">
+    <div class="config-school__title">Классы:</div>
+    <form [formGroup]="angForm" novalidate class="config-school__action">
+        <div class="form-group">
+            <input type="text" class="config-school__action_input form-group" placeholder="Класс" formControlName="NumberClass" #NumberClass>
+        </div>
+        <div *ngIf="angForm.controls['NumberClass'].invalid && (angForm.controls['NumberClass'].dirty || angForm.controls['NumberClass'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NumberClass'].errors.required">
+                Класс не введен!
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="config-school__action_button" (click)="addNC(NumberClass.value); NumberClass.value=''" [disabled]="angForm.pristine || angForm.invalid" [routerLink]="['/school_class']">
+              Добавить
+            </button>
+        </div>
+    </form>
+    <table class="config-school__table">
+        <tr *ngFor="let class of classs">
+            <td>
+                {{ class.NumberClass }}
+            </td>
+            <td>
+                <a class="config-school__table_delete" data-title="Удалить?" (click)="deleteNC(class._id);"></a>
+            </td>
+        </tr>
+    </table>
+</div>

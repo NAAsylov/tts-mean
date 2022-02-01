@@ -1,0 +1,21 @@
+// Файл обнуляющих стилей
+@import "nullstyle.scss";
+
+
+.header {
+	background-color: #563d7c;
+	&__container {
+		max-width: 980px;
+		margin: 0 auto;
+	}
+	&__logo {}
+	&__menu {}
+}
+.menu {
+	&__icon {}
+	&__body {}
+	&__list {}
+	&__link {}
+}
+.icon-menu {
+}

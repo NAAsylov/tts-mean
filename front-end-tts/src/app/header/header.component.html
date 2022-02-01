@@ -1,0 +1,44 @@
+<header class="header">
+    <div class="header__container _container">
+        <!-- Бургер -->
+        <div class="icon-menu">
+            <span></span>
+        </div>
+        <a [routerLink]="['']" class="header__logo"><img src="../../assets/images/logo.jpg" alt=""></a>
+        <div class="header__menu menu">
+            <!-- Меню навигации -->
+            <nav class="menu__body">
+                <!-- Кнопки для не авторизованных -->
+                <ul class="menu__list">
+                    <li><a [routerLink]="['']" class="menu__link">Главная</a></li>
+                    <li><a [routerLink]="['/about-school']" class="menu__link">О школе</a></li>
+                    <li><a [routerLink]="['/contact']" class="menu__link">Связаться</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header__actions actions-header">
+            <div class="actions-header__user user-header">
+                <div class="user-header__icon">
+                    <img id="img" src="../../assets/images/icons/user.png" alt="">
+                </div>
+                <ul class="user-header__menu">
+                    <!-- Для всех -->
+                    <li><a *ngIf="!currentUser" [routerLink]="['/login']" class="user-header__link">Войти</a></li>
+                    <li><a *ngIf="!currentUser" [routerLink]="['/register']" class="user-header__link">Регистрация</a></li>
+                    <!-- Для простого пользователя -->
+                    <li><a *ngIf="currentUser && !isAdmin" [routerLink]="['/user_account']" class="user-header__link">Личный кабинет</a></li>
+                    <li><a *ngIf="currentUser && !isAdmin" [routerLink]="['/user_schedule']" class="user-header__link">Расписание</a></li>
+                    <!-- Для администратора -->
+                    <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/admin_account']" class="user-header__link">Личный кабинет</a></li>
+                    <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/general_schedule']" class="user-header__link">Расписание</a></li>
+                    <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/school_buzzer']" class="user-header__link">Звонки</a></li>
+                    <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/school_class']" class="user-header__link">Классы</a></li>
+                    <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/school_subject']" class="user-header__link">Предметы</a></li>
+                    <!-- <li><a *ngIf="currentUser && isAdmin" [routerLink]="['/school_day']" class="user-header__link">Учебные дни</a></li> -->
+                    <!-- Для всех -->
+                    <li><a *ngIf="currentUser" [routerLink]="['']" (click)="logout()" class="user-header__link">Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

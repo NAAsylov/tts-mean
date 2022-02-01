@@ -1,0 +1,39 @@
+<div class="subject-add">
+    <form [formGroup]="angForm" novalidate>
+        <div class="number-subject form-group">
+            <div class="subject-add__header">Номер урока:</div>
+            <input type="text" placeholder="Номер урока" formControlName="NumberLesson" #NumberLesson [(ngModel)]="call.NumberLesson">
+        </div>
+        <div *ngIf="angForm.controls['NumberLesson'].invalid && (angForm.controls['NumberLesson'].dirty || angForm.controls['NumberLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NumberLesson'].errors.required">
+                Введите номер!
+            </div>
+        </div>
+        <div class="number-subject form-group">
+            <div class="subject-add__header">Время начала:</div>
+            <input type="text" placeholder="Время начала урока" formControlName="StartLesson" #StartLesson [(ngModel)]="call.StartLesson">
+        </div>
+        <div *ngIf="angForm.controls['StartLesson'].invalid && (angForm.controls['StartLesson'].dirty || angForm.controls['StartLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['StartLesson'].errors.required">
+                Введите время начала!
+            </div>
+        </div>
+        <div class="number-subject form-group">
+            <div class="subject-add__header">Время конца:</div>
+            <input type="text" placeholder="Время конца урока" formControlName="EndLesson" #EndLesson [(ngModel)]="call.EndLesson">
+        </div>
+        <div *ngIf="angForm.controls['EndLesson'].invalid && (angForm.controls['EndLesson'].dirty || angForm.controls['EndLesson'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['EndLesson'].errors.required">
+                Введите время конца!
+            </div>
+        </div>
+        <div class="form-group">
+            <button (click)="updateCall(NumberLesson.value, StartLesson.value, EndLesson.value)" type="submit" [disabled]="angForm.invalid">
+            Изменить
+          </button>
+        </div>
+        <div class="form-group">
+            <a [routerLink]="['/school_buzzer']" class="cancel">Отмена</a>
+        </div>
+    </form>
+</div>

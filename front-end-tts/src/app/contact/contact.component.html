@@ -1,0 +1,40 @@
+<div class="contact__info">
+    <form class="contact__form" [formGroup]="angForm" novalidate>
+        <div class="contact__title">Напишите нам на почту и мы вам ответим или перезвоним</div>
+        <div class="item-contact">
+            <input type="text" formControlName="fio" #fio class="item-contact_input" placeholder="Ваше ФИО">
+        </div>
+        <div *ngIf="angForm.controls['fio'].invalid && (angForm.controls['fio'].dirty || angForm.controls['fio'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['fio'].errors.required">
+                Введите ФИО
+            </div>
+        </div>
+        <div class="item-contact">
+            <input type="text" formControlName="email" #email class="item-contact_input" placeholder="Ваш Email">
+        </div>
+        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['email'].errors.required">
+                Введите Email
+            </div>
+        </div>
+        <div class="item-contact">
+            <input type="text" formControlName="phone" #phone class="item-contact_input" placeholder="+7 XXX XXX XX XX">
+        </div>
+        <div *ngIf="angForm.controls['phone'].invalid && (angForm.controls['phone'].dirty || angForm.controls['phone'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['phone'].errors.required">
+                Введите Номер телефона
+            </div>
+        </div>
+        <div class="item-contact">
+            <textarea class="item-contact_message" formControlName="message" #message placeholder="Ваше сообщение"></textarea>
+        </div>
+        <div *ngIf="angForm.controls['message'].invalid && (angForm.controls['message'].dirty || angForm.controls['message'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['message'].errors.required">
+                Введите Ваше сообщение
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="item-contact_submit" (click)="sender_mail(fio.value, email.value, phone.value, message.value)" [disabled]="angForm.pristine || angForm.invalid">Отправить</button>
+        </div>
+    </form>
+</div>

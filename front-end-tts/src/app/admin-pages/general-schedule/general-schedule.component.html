@@ -1,0 +1,277 @@
+<div class="timetable">
+    <ul class="timetable__list">
+        <li class="timetable__list_li">
+            <div class="timetable__header _monday" (click)="openMonday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _monday">
+                        Понедельник
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 1">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _monday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Классы</th>
+                        <th class="header-table__subject">Предметы</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Понедельник'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="timetable__list_li">
+            <div class="timetable__header _tuesday" (click)="openTuesday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _tuesday">
+                        Вторник
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 2">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _tuesday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Вторник'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="timetable__list_li">
+            <div class="timetable__header" (click)="openWednesday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _wednesday">
+                        Среда
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 3">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _wednesday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Среда'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="timetable__list_li">
+            <div class="timetable__header" (click)="openThursday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _thursday">
+                        Четверг
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 4">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _thursday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Четверг'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="timetable__list_li">
+            <div class="timetable__header" (click)="openFriday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _friday">
+                        Пятница
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 5">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _friday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Пятница'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li class="timetable__list_li">
+            <div class="timetable__header" (click)="openSaturday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _saturday">
+                        Суббота
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 6">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _saturday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Суббота'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div class="timetable__header" (click)="openSunday()">
+                <div class="timetable__weekday weekday-timetable">
+                    <div class="weekday-timetable__name _sunday">
+                        Воскресенье
+                    </div>
+                </div>
+                <div class="timetable__date date-timetable">
+                    <div class="date-timetable__now" *ngIf="nowday === 0">Сегодня</div>
+                </div>
+            </div>
+            <table class="timetable__table table-timetable _sunday">
+                <thead class="table-timetable__header header-table">
+                    <tr>
+                        <th class="header-table__time">Время</th>
+                        <th class="header-table__subject">Предмет</th>
+                    </tr>
+                </thead>
+                <tbody class="table-timetable__body body-table">
+                    <tr *ngFor="let class of classs">
+                        <td>{{ class.NumberClass }}</td>
+                        <td>
+                            <ng-template ngFor let-gs [ngForOf]="gss">
+                                <li *ngIf="gs.ClassLesson == class.NumberClass && gs.DayLesson == 'Воскресенье'">
+                                    {{ gs.NumberLesson}}. {{ gs.NameLesson}}
+                                    <a class="schoole-scedule__table_edit" [routerLink]="['/general_schedule_edit', gs._id]"></a>
+                                    <a class="schoole-scedule__table_delete" (click)="deleteGS(gs._id)"></a>
+                                </li>
+                            </ng-template>
+                        </td>
+                    </tr>
+                    <tr class="body-table__row">
+                        <td colspan="2" class="body-table__column">
+                            <a [routerLink]="['/general_schedule_add']">Добавить урок</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div>

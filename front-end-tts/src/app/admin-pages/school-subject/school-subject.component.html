@@ -1,0 +1,28 @@
+<div class="config-school">
+    <div class="config-school__title">Учебные предметы:</div>
+    <form class="config-school__action" [formGroup]="angForm" novalidate>
+        <div class="form-group">
+            <input type="text" class="config-school__action_input" placeholder="Введите название" formControlName="NameSubject" #NameSubject>
+        </div>
+        <div *ngIf="angForm.controls['NameSubject'].invalid && (angForm.controls['NameSubject'].dirty || angForm.controls['NameSubject'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['NameSubject'].errors.required">
+                Название предмета не введено!
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="config-school__action_button" (click)="addSubject(NameSubject.value)" [disabled]="angForm.pristine || angForm.invalid" [routerLink]="['/school_subject']">
+            Добавить
+          </button>
+        </div>
+    </form>
+    <table class="config-school__table">
+        <tr *ngFor="let subject of subjects">
+            <td>
+                {{ subject.NameSubject }}
+            </td>
+            <td>
+                <a class="config-school__table_delete" data-title="Удалить?" (click)="deleteSubject(subject._id)"></a>
+            </td>
+        </tr>
+    </table>
+</div>
